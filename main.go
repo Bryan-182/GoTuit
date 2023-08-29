@@ -57,7 +57,7 @@ func RunLambda(ctx context.Context, request events.APIGatewayProxyRequest) (*eve
 	awsgo.Ctx = context.WithValue(awsgo.Ctx, models.Key("body"), request.Body)
 	awsgo.Ctx = context.WithValue(awsgo.Ctx, models.Key("bucketname"), os.Getenv("BucketName"))
 
-	path := strings.Replace(request.PathParameters["gotuit"], os.Getenv("UrlPrefix"), "", -1)
+	path := strings.Replace(request.PathParameters["GoTuit"], os.Getenv("UrlPrefix"), "", -1)
 	awsgo.Ctx = context.WithValue(awsgo.Ctx, models.Key("path"), path)
 
 	//Chequeo conexion a DB o la conecto
