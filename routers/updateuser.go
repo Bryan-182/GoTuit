@@ -22,7 +22,7 @@ func UpdateUser(ctx context.Context, claim models.Claim) models.ApiResponse {
 		r.Message = "Datos incorrectos " + err.Error()
 	}
 
-	status, err := bd.UpdateUser(t, claim.ID.Hex())
+	status, err := bd.UpdateUser(t, claim.ID.Hex()) //Actualiza el user con el Id que viene del token
 
 	if err != nil {
 		r.Message = "Ocurrió un error al intentar modificar el usuario " + err.Error()
