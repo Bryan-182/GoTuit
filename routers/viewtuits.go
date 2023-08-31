@@ -16,12 +16,12 @@ func ViewTuits(request events.APIGatewayProxyRequest) models.ApiResponse {
 	ID := request.QueryStringParameters["id"]
 	page := request.QueryStringParameters["page"]
 
-	if len(ID) > 1 {
+	if len(ID) < 1 {
 		r.Message = "El parametro ID es obligatorio"
 		return r
 	}
 
-	if len(page) > 1 {
+	if len(page) < 1 {
 		page = "1"
 	}
 
