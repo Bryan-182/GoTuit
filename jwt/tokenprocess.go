@@ -4,6 +4,7 @@ import (
 	"errors"
 	"strings"
 
+	"github.com/Bryan-182/GoTuit/bd"
 	"github.com/Bryan-182/GoTuit/models"
 	jwt "github.com/golang-jwt/jwt/v5"
 )
@@ -29,6 +30,12 @@ func TokenProcess(tk string, JWTSign string) (*models.Claim, bool, string, error
 
 	if err == nil {
 		//Rutina que chequea contra la BD
+		_, found, _ := bd.UserExist(claims.Email)
+		if found {
+			Email = claims.Email
+			IdUser = claims.ID.Hex()
+		}
+		return &claims, found, IdUser, nil
 	}
 
 	if !tkn.Valid {
